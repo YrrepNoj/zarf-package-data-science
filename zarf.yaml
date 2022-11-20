@@ -1,0 +1,23 @@
+kind: ZarfPackageConfig
+metadata:
+  name: data-science 
+  description: "Modest attempt at building a package for data science tasks"
+
+components:
+  - name: jupyter
+    required: true
+    images:
+      - jupyterhub/k8s-hub:2.0.0
+      - jupyterhub/configurable-http-proxy:4.5.3
+      - jupyterhub/k8s-network-tools:2.0.0
+      - jupyterhub/k8s-singleuser-sample:2.0.0
+      - jupyterhub/k8s-image-awaiter:2.0.0
+      - k8s.gcr.io/kube-scheduler:v1.20.15
+      - k8s.gcr.io/kube-scheduler:v1.23.10
+      - k8s.gcr.io/pause:3.8
+    charts:
+      - name: jupyterhub
+        releaseName: jupyterhub
+        url: https://jupyterhub.github.io/helm-chart/
+        version: 2.0.0
+        namespace: jupyterhub
